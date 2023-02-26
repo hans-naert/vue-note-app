@@ -1,0 +1,11 @@
+{
+    "name": "VueNoteApp",
+    "short_name": "VueNoteApp",
+    "theme_color": "#36495d",
+    "background_color": "#36495d",
+    "display": "standalone",
+    "orientation": "portrait",
+    "Scope": "/",
+    "start_url": "/"
+}
+    
