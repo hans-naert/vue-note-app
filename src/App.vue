@@ -5,9 +5,9 @@ import { ref } from 'vue'
 let pages=ref([{title: 'First Note', content: 'Note Content of First Note'},{title: 'Second Note', content: 'Note Content of Second Note'}])
 
 
-function newNote(){
-    console.log('newNote');
-    pages.value.push({title: 'New Note', content: 'Note Content of New Note'});
+function newNote(note){
+    console.log(`newNote ${JSON.stringify(note)}`);
+    pages.value.push(note);
 }
 
 function saveNote(){
