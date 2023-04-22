@@ -4,7 +4,7 @@ let noteTitle = ref('');
 let noteContent = ref('');
 
 const props = defineProps({ 'pages': [], index: 0 });
-const emit = defineEmits(['new-note']);
+const emit = defineEmits(['new-note','delete-note']);
 
 
 function newNote(event) {
@@ -15,12 +15,18 @@ function newNote(event) {
 </script>
 
 <template>
-    <v-card class="mt-6" v-for="page in pages">
+    <v-card class="mt-4 px-4" v-for="(page, index) in pages">
         <v-card-title label="Note Title" outlined>{{ page.title }}  </v-card-title>
         <v-card-text label="Note Content" outlined> {{ page.content }}</v-card-text>
+        <v-card-actions>
+            <v-btn icon color="secondary" size="x-large" @click="$emit('delete-note',index)">
+                <v-icon icon="mdi-delete"></v-icon>
+                Delete
+            </v-btn>
+        </v-card-actions>
     </v-card>   
 
-    <v-card class="mt-4">
+    <v-card class="mt-4 px-4">
         <v-card-title>
             <v-text-field v-model="noteTitle" label="Note Title" outlined></v-text-field>
         </v-card-title>
@@ -28,7 +34,7 @@ function newNote(event) {
             <v-textarea v-model="noteContent" label="Note Content" outlined></v-textarea>
         </v-card-text>
         <v-card-actions>
-            <v-btn  icon color="primary" size="x-large" @click="$emit('new-note',{title:noteTitle,content:noteContent})">
+            <v-btn icon color="primary" size="x-large" @click="$emit('new-note',{title:noteTitle,content:noteContent})">
                 <v-icon icon="mdi-plus-circle"></v-icon>
                 Add
             </v-btn>

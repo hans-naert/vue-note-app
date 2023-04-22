@@ -14,8 +14,9 @@ function saveNote(){
     console.log('saveNote');
 }
 
-function deleteNote(){
+function deleteNote(index){
     console.log('deleteNote');
+    pages.value.splice(index,1)
 }
 
 
@@ -30,6 +31,6 @@ function deleteNote(){
       </v-toolbar-title>
       <v-spacer></v-spacer>
     </v-toolbar>        
-      <Notes  :pages="pages" @new-note="newNote"/>
+      <Notes  :pages="pages" @new-note="newNote" @delete-note="deleteNote"/>
   </v-app>
 </template>
